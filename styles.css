@@ -194,9 +194,6 @@ section {
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     width: 48%;
     margin-bottom: 20px;
-}
-
-.stat-content {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -210,41 +207,33 @@ section {
     margin-bottom: 10px;
 }
 
-/* Brochure Section */
-.brochure-section {
-    background-color: var(--off-white);
-}
-
-.brochure-content {
+.brochure-container {
     display: flex;
     align-items: center;
     gap: 40px;
-}
-
-.brochure-text {
-    flex: 1;
-}
-
-.brochure-text h3 {
-    margin-bottom: 15px;
-    color: var(--dark-green);
-    font-size: 1.8rem;
-}
-
-.brochure-text p {
-    margin-bottom: 20px;
+    background-color: var(--light-gray);
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 .brochure-image {
-    flex: 1;
+    flex: 2;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 .brochure-image img {
     width: 100%;
     display: block;
+}
+
+.brochure-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
 }
 
 .gallery-container {
@@ -273,6 +262,66 @@ section {
     display: block;
 }
 
+.team-section {
+    background-color: var(--light-gray);
+}
+
+.team-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 30px;
+    justify-items: center;
+}
+
+.team-member {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.team-member:hover {
+    transform: translateY(-5px);
+}
+
+.team-member.leader {
+    grid-column: 1 / -1;
+    max-width: 300px;
+    background-color: var(--primary-green);
+    color: white;
+}
+
+.team-member.leader .member-role {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.member-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 15px;
+    border: 5px solid var(--primary-green);
+}
+
+.leader .member-image {
+    border-color: white;
+}
+
+.member-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.member-role {
+    color: var(--primary-green);
+    font-weight: 500;
+    margin-top: 5px;
+}
+
 footer {
     background-color: var(--dark-green);
     color: white;
@@ -292,28 +341,40 @@ footer {
     text-decoration: none;
 }
 
-/* Mobile Responsive Styles */
-@media (max-width: 768px) {
-    .logo {
-        margin-right: 0;
+@media (max-width: 992px) {
+    .about-content, 
+    .data-container,
+    .brochure-container {
+        flex-direction: column;
     }
     
+    .brochure-text {
+        align-items: center;
+        text-align: center;
+    }
+    
+    .team-container {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
     .hamburger {
         display: block;
     }
     
     .nav-links {
         position: fixed;
-        top: 70px;
         left: -100%;
-        width: 100%;
-        height: auto;
+        top: 70px;
+        gap: 0;
         flex-direction: column;
         background-color: var(--primary-green);
-        transition: 0.3s;
+        width: 100%;
         text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
         padding: 20px 0;
-        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
     }
     
     .nav-links.active {
@@ -321,13 +382,7 @@ footer {
     }
     
     .nav-links li {
-        margin: 15px 0;
-    }
-    
-    .about-content, 
-    .data-container,
-    .brochure-content {
-        flex-direction: column;
+        margin: 16px 0;
     }
     
     .hero h1 {
@@ -342,21 +397,17 @@ footer {
         width: 100%;
     }
     
-    .gallery-container {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    .team-container {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     }
     
-    .footer-links {
-        flex-direction: column;
-        gap: 10px;
+    .member-image {
+        width: 120px;
+        height: 120px;
     }
 }
 
 @media (max-width: 480px) {
-    .container {
-        padding: 0 15px;
-    }
-    
     .hero h1 {
         font-size: 1.8rem;
     }
@@ -367,10 +418,18 @@ footer {
     
     .section-title {
         font-size: 1.8rem;
-        margin-bottom: 30px;
     }
     
-    .stat-number {
-        font-size: 2rem;
+    .gallery-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .team-container {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .footer-links {
+        flex-direction: column;
+        gap: 10px;
     }
 }
