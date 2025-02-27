@@ -1,4 +1,4 @@
-// Mobile Navigation
+// Mobile menu toggle
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('navLinks');
 
@@ -6,12 +6,10 @@ hamburger.addEventListener('click', () => {
     navLinks.classList.toggle('active');
 });
 
-// Close mobile menu when clicking on a link
+// Close mobile menu when clicking a link
 document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
-        if (navLinks.classList.contains('active')) {
-            navLinks.classList.remove('active');
-        }
+        navLinks.classList.remove('active');
     });
 });
 
@@ -60,9 +58,4 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             behavior: 'smooth'
         });
     });
-});
-
-// Add resize listener to handle chart responsiveness
-window.addEventListener('resize', () => {
-    wasteChart.resize();
 });
